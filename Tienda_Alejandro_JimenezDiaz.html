@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online - Alejandro</title>
+    <style>
+         @import url('https://fonts.cdnfonts.com/css/homer-simpson-revised');
+        body {
+            font-family: 'Homer Simpson Revised' , Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9fd02;
+            background-image: url('https://img.freepik.com/vector-premium/donuts-patrones-fisuras-sobre-fondo-blanco-donuts-sabrosos-glaseado-polvo-icono-ilustracion-vectorial_385450-853.jpg'); 
+            background-size: contain; 
+            background-position: center; 
+            background-repeat: repeat; 
+
+            
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            background-image: url('https://images7.alphacoders.com/457/457344.png'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .productos, .cart {
+            opacity: 90%;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .productos {
+        flex: 2;
+
+        }
+        .cart {
+            flex: 1;
+        }
+        .producto-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .producto-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #ffffff;
+            opacity: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .producto-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 40%;
+            margin-bottom: 10px;
+            opacity: 100%;
+        }
+        .producto-info {
+            text-align: center;
+        }
+        .tooltip {
+            position: absolute;
+            bottom: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            width: 200px;
+            text-align: center;
+            font-size: 14px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 10;
+        }
+
+        .producto-card:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+        .cart-list {
+            list-style-type: none;
+            padding: 0;
+            
+        }
+        .cart-list li {
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvSj2Q_XXuwpoxAZc_S_lpEsr0nOeV5eYGLQ&s'); 
+            background-size:cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+
+        }
+        .btn-remove {
+            background-color: #dc3545;
+        }
+        .btn-remove:hover {
+            background-color: #c82333;
+            background-image: url('https://wallpapers.com/images/hd/homer-simpson-funny-n2svg1zi11k9p9b7.jpg');                
+            background-size:cover; 
+            background-position: center; 
+            background-repeat: repeat; 
+        }
+        .total {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="color: #f9fd02;">TIENDA ONLINE</h1>
+    <div class="container">
+        <!-- Sección de Productos -->
+        <div class="productos">
+            <div class="producto-grid">
+                <!-- Producto 1 -->
+                <div class="producto-card">
+                    <img  src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTqXJbshggzYcmfodnzVkqJhkwmLBtYRoJovDTBccinEKzHDyUbqPghoZCycwbfzp6EbgLKQ6jcc88bKm9iFKjCTZX4j0zNGRSleBUfK693isVfvXnOAM7QM_2qLki9E9KPrdkJLIH4DUU&usqp=CAc" alt="Producto 1">
+                    <div class="producto-info">
+                        <p>THE SIMPSON FAMILY MAXI</p>
+                        <p>Precio: <span class="price">200</span> €</p>
+                        <input type="number" class="quantity" min="1" value="1">
+                        <button onclick="addToCart('THE SIMPSON FAMILY MAXI', 200)">Añadir a Carrito</button>
+                    </div>
+                    <div class="tooltip">
+                        <img src="https://static.swatch.com/images/product/MGJ001/li1/MGJ001_li1_ec001-1080x1080.jpg" alt="Detalle C">
+                        <p>Este divertido reloj de gran tamaño de la colección de Los Simpson presenta una esfera y una correa de color amarillo mate en la que se 
+                            puede ver a toda la familia Simpson. Incorpora una aguja horaria roja, un minutero azul y un segundero blanco sobre una caja de color amarillo mate.
+                            En la trabilla amarilla mate se puede leer el logotipo de Los Simpson impreso en negro.</p>
+                    </div>
+                </div>
+                <!-- Producto 2 -->
+                <div class="producto-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSjb_4qAeI1x1waOGzYPvs6Cm52ABj6p6A3oLOwgNYaeKb1HzbMS3andQnANlZMV9jnJd3DzrAKyFgaIHdrYZgQSMXXEahIW9ky-LY9sTYBE2hJIblH0Y705OSQh4CxlxUt2nC06dXqVBc&usqp=CAc" alt="Producto 2">
+                    <div class="producto-info">
+                        <p>BEST. DAD. EVER. HOMER.</p>
+                        <p>Precio: <span class="price">59</span> €</p>
+                        <input type="number" class="quantity" min="1" value="1">
+                        <button onclick="addToCart('BEST. DAD. EVER. HOMER.', 59)">Añadir a Carrito</button>
+                    </div>
+                    <div class="tooltip">
+                        <img src="https://static.swatch.com/images/product/SB05Z100/li1/SB05Z100_li1_ec001-1080x1080.jpg" alt="Detalle A">
+                        <p>Parte de la colección de Los Simpson, este divertido especial para el Día del Padre presenta a Homer Simpson impreso en la esfera y la correa. 
+                            La caja, el bisel y el cristal de este reloj están fabricados con material de origen biológico. TM & © 20th Television. Matt Groening</p>
+                    </div>
+                </div>
+                <!-- Producto 3 -->
+                <div class="producto-card">
+                    <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSqcNscy-aKJoJ6ZCYquU1XC4l7oRyVWOc1VH2H_4maTTQAplXXrooObJ0yKV6BtqmW7wnUf63d4uXWIR0Kl3MUNjIjNdLkKgYnr8jRfxE-loUSAy1yXU9SVSiGFw3fDulVeBIy7w&usqp=CAc" alt="Producto 3">
+                    <div class="producto-info">
+                        <p>SECONDS OF SWEETNESS</p>
+                        <p>Precio: <span class="price">45</span> €</p>
+                        <input type="number" class="quantity" min="1" value="1">
+                        <button onclick="addToCart('SECONDS OF SWEETNESS', 45)">Añadir a Carrito</button>
+                    </div>
+                    <div class="tooltip">
+                        <img src="https://static.swatch.com/images/product/SO29Z134/li2/SO29Z134_li2_ec001-1080x1080.jpg" alt="Detalle A">
+                        <p>Este colorido reloj, que forma parte de nuestra colaboración con Los Simpson, presenta una esfera con el dibujo de un dónut dentro.
+                             Su caja amarilla mate de origen biológico viene recubierta por un cristal del mismo origen e incorpora una correa decorada con virutas de chocolate.
+                              TM & © 20th Television. Matt Groening</p>
+                    </div>
+                </div>
+                <!-- Producto 4 -->
+                <div class="producto-card">
+                    <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcT_1RJ4_WNzjYc7EJvk6V0W_6z9mZvzYXCQaW_OEInn4Ea_0DaKWHTDi0G6ajyy3tOT3G9A2t3MrgXA5IuqxT4NHHvPLa-OjWwTf_xKZPT42GM571SRj-PKoUquWaFjgsVoAYkuow&usqp=CAc" alt="Producto 4">
+                    <div class="producto-info">
+                        <p>D'OH OF THE DEAD</p>
+                        <p>Precio: <span class="price">59</span> €</p>
+                        <input type="number" class="quantity" min="1" value="1">
+                        <button onclick="addToCart('D OH OF THE DEAD', 59)">Añadir a Carrito</button>
+                    </div>
+                    <div class="tooltip">
+                        <img src="https://static.swatch.com/images/product/SO29Z135/li4/SO29Z135_li4_ec001-1080x1080.jpg" alt="Detalle A">
+                        <p>Este reloj tan festivo forma parte de la colección de Los Simpson y presenta a toda la familia de Springfield rodeada 
+                            de guirnaldas mexicanas de colores sobre una esfera y una correa de color negro mate. </p>
+                    </div>
+                </div>
+                <!-- Producto 5 -->
+                <div class="producto-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSuhquSysBXdqUwkp3hrmkddrAs27rQeQsIS3Dqn_Ck6ds3pieWVYzrkgtcsoGXsDsOZ4HHlkw8gfCD_GKNbAIQ1gq6GWEZplgTr8e-55TQprcXRVb1-C2sce56kckjQGoUOM3yiXPw&usqp=CAc" alt="Producto 5">
+                    <div class="product-info">
+                        <p>ANGEL BART</p>
+                        <p>Precio: <span class="price">64</span> €</p>
+                        <input type="number" class="quantity" min="1" value="1">
+                        <button onclick="addToCart('ANGEL BART', 64)">Añadir a Carrito</button>
+                    </div>
+                    <div class="tooltip">
+                        <img src="https://static.swatch.com/images/product/SO28Z115/li3/SO28Z115_li3_ec001-1080x1080.jpg" alt="Detalle A">
+                        <p>Parte de la colección de Los Simpson, este especial de San Valentín presenta a Bart Simpson como Cupido en la esfera.
+                             Cuenta con una caja azul claro de origen biológico, una correa azul celeste con nubes impresas y una trabilla roja con el logotipo de Los Simpson.
+                              TM & © 20th Television. Matt Groening</p>
+                    </div>
+                </div>
+                <!-- Producto 6 -->
+                <div class="producto-card">
+                    <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTvzNg1drN8JJjLehP3ECWl7Fpa00MicR8T-FaY4ERgPX6-apmNaaA0gSZAAkBd_i3y1zFRfbcgC2zcrBiKmztOQb9253VcXHcnnb4MhEc3VgfL3-cTuLm8qpDLEJJVbO9j47COyjIf&usqp=CAc" alt="Producto 6">
+                    <div class="producto-info">
+                        <p>CHRISTMAS SIMPSONS</p>
+                        <p>Precio: <span class="price">49</span> €</p>
+                        <input type="number" class="quantity" min="1" value="1">
+                        <button onclick="addToCart('CHISTMAS SIMPSONS', 49)">Añadir a Carrito</button>
+                    </div>
+                    <div class="tooltip">
+                        <img src="https://static.swatch.com/images/product/SUOZ361/li1/SUOZ361_li1_ec001-1080x1080.jpg" alt="Detalle A">
+                        <p>Este reloj especial para la fiestas de color rojo forma parte de nuestra colaboración con los Simpson. 
+                            Su esfera muestra una imagen de todos los miembros de la familia Simpson en distintos colores. 
+                            Su correa roja estampada incluye una trabilla y una hebilla azules que contrastan con el resto del reloj. 
+                            TM & © 20th Television. Matt Groening</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Carrito -->
+        <div class="cart">
+            <h2>Carrito</h2>
+            <ul class="cart-list" id="cart-list"></ul>
+            <p class="total">Total Carrito: <span id="total-amount">0.00</span> €</p>
+            <button onclick="purchaseNow()">Comprar Ahora</button>
+            <button class="btn-remove" onclick="removeLastProduct()">Eliminar Producto</button>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        
+        function addToCart(productName, price) {
+            const quantity = parseInt(event.target.previousElementSibling.value);
+            const productTotal = price * quantity;
+            
+            cart.push({ name: productName, quantity, total: productTotal });
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartList = document.getElementById('cart-list');
+            const totalAmount = document.getElementById('total-amount');
+            
+            cartList.innerHTML = '';
+            let totalPrice = 0;
+            
+            cart.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} x ${item.quantity} = ${item.total.toFixed(2)} €`;
+                cartList.appendChild(listItem);
+                
+                totalPrice += item.total;
+            });
+
+            totalAmount.textContent = totalPrice.toFixed(2);
+        }
+
+        function purchaseNow() {
+            const totalAmount = document.getElementById('total-amount').textContent;
+            const totalProducts = cart.reduce((acc, item) => acc + item.quantity, 0);
+            
+            alert(`TU COMPRA ES: ${totalProducts} productos con un importe total de ${totalAmount} €`);
+        }
+
+        function removeLastProduct() {
+            if (cart.length > 0) {
+                cart.pop();
+                updateCart();
+            }
+        }
+    </script>
+</body>
+</html>
