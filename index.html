@@ -13,7 +13,7 @@
             padding: 20px;
             background-color: #f9fd02;
             background-image: url('https://img.freepik.com/vector-premium/donuts-patrones-fisuras-sobre-fondo-blanco-donuts-sabrosos-glaseado-polvo-icono-ilustracion-vectorial_385450-853.jpg'); 
-            background-size: contain; 
+             
             background-position: center; 
             background-repeat: repeat; 
 
@@ -148,8 +148,8 @@
                     <div class="producto-info">
                         <p>THE SIMPSON FAMILY MAXI</p>
                         <p>Precio: <span class="price">200</span> €</p>
-                        <input type="number" class="quantity" min="1" value="1">
-                        <button onclick="addToCart('THE SIMPSON FAMILY MAXI', 200)">Añadir a Carrito</button>
+                        <input type="number" class="quantity" id="quantity1" min="1"  value="1">
+                        <button onclick="addToCart('THE SIMPSON FAMILY MAXI', 200, document.getElementById('quantity1'))">Añadir a Carrito</button>
                     </div>
                     <div class="tooltip">
                         <img src="https://static.swatch.com/images/product/MGJ001/li1/MGJ001_li1_ec001-1080x1080.jpg" alt="Detalle C">
@@ -164,8 +164,8 @@
                     <div class="producto-info">
                         <p>BEST. DAD. EVER. HOMER.</p>
                         <p>Precio: <span class="price">59</span> €</p>
-                        <input type="number" class="quantity" min="1" value="1">
-                        <button onclick="addToCart('BEST. DAD. EVER. HOMER.', 59)">Añadir a Carrito</button>
+                        <input type="number" class="quantity" id="quantity2" min="1" value="1">
+                        <button onclick="addToCart('BEST. DAD. EVER. HOMER.', 59, document.getElementById('quantity2'))">Añadir a Carrito</button>
                     </div>
                     <div class="tooltip">
                         <img src="https://static.swatch.com/images/product/SB05Z100/li1/SB05Z100_li1_ec001-1080x1080.jpg" alt="Detalle A">
@@ -179,8 +179,8 @@
                     <div class="producto-info">
                         <p>SECONDS OF SWEETNESS</p>
                         <p>Precio: <span class="price">45</span> €</p>
-                        <input type="number" class="quantity" min="1" value="1">
-                        <button onclick="addToCart('SECONDS OF SWEETNESS', 45)">Añadir a Carrito</button>
+                        <input type="number" class="quantity" id="quantity3" min="1" value="1">
+                        <button onclick="addToCart('SECONDS OF SWEETNESS', 45, document.getElementById('quantity3'))">Añadir a Carrito</button>
                     </div>
                     <div class="tooltip">
                         <img src="https://static.swatch.com/images/product/SO29Z134/li2/SO29Z134_li2_ec001-1080x1080.jpg" alt="Detalle A">
@@ -195,8 +195,8 @@
                     <div class="producto-info">
                         <p>D'OH OF THE DEAD</p>
                         <p>Precio: <span class="price">59</span> €</p>
-                        <input type="number" class="quantity" min="1" value="1">
-                        <button onclick="addToCart('D OH OF THE DEAD', 59)">Añadir a Carrito</button>
+                        <input type="number" class="quantity" id="quantity4" min="1" value="1">
+                        <button onclick="addToCart('D OH OF THE DEAD', 59, document.getElementById('quantity4'))">Añadir a Carrito</button>
                     </div>
                     <div class="tooltip">
                         <img src="https://static.swatch.com/images/product/SO29Z135/li4/SO29Z135_li4_ec001-1080x1080.jpg" alt="Detalle A">
@@ -210,8 +210,8 @@
                     <div class="product-info">
                         <p>ANGEL BART</p>
                         <p>Precio: <span class="price">64</span> €</p>
-                        <input type="number" class="quantity" min="1" value="1">
-                        <button onclick="addToCart('ANGEL BART', 64)">Añadir a Carrito</button>
+                        <input type="number" class="quantity" id="quantity5" min="1" value="1">
+                        <button onclick="addToCart('ANGEL BART', 64, document.getElementById('quantity5'))">Añadir a Carrito</button>
                     </div>
                     <div class="tooltip">
                         <img src="https://static.swatch.com/images/product/SO28Z115/li3/SO28Z115_li3_ec001-1080x1080.jpg" alt="Detalle A">
@@ -226,8 +226,8 @@
                     <div class="producto-info">
                         <p>CHRISTMAS SIMPSONS</p>
                         <p>Precio: <span class="price">49</span> €</p>
-                        <input type="number" class="quantity" min="1" value="1">
-                        <button onclick="addToCart('CHISTMAS SIMPSONS', 49)">Añadir a Carrito</button>
+                        <input type="number" class="quantity" id="quantity6" min="1" value="1">
+                        <button onclick="addToCart('CHRISTMAS SIMPSONS', 49, document.getElementById('quantity6'))">Añadir a Carrito</button>
                     </div>
                     <div class="tooltip">
                         <img src="https://static.swatch.com/images/product/SUOZ361/li1/SUOZ361_li1_ec001-1080x1080.jpg" alt="Detalle A">
@@ -253,8 +253,8 @@
     <script>
         let cart = [];
         
-        function addToCart(productName, price) {
-            const quantity = parseInt(event.target.previousElementSibling.value);
+        function addToCart(productName, price, quantityInput) {
+            const quantity = parseInt(quantityInput.value);
             const productTotal = price * quantity;
             
             cart.push({ name: productName, quantity, total: productTotal });
