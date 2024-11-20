@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIENDA ONLINE</title>
+    <title>TIENDA ONLINE</title><!--Importamos bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <style>
+    /* Importo al fuente de los Simpson */
 
     @import url('https://fonts.cdnfonts.com/css/homer-simpson-revised');
 
@@ -16,25 +17,23 @@
         color: black;
         background-image: url('https://img.freepik.com/vector-premium/donuts-patrones-fisuras-sobre-fondo-blanco-donuts-sabrosos-glaseado-polvo-icono-ilustracion-vectorial_385450-853.jpg');
         background-repeat: repeat;
+        /* añado una imagen de fondo del body, le doy la caracteristica repeat para que no pierda calidad ya que es un fondo unirforme */
     }
 
     .container {
+        /* coloree el fondo blanco antes de seleccionar la imagen de fondo, para ubicar el container e ir comprobando, le añadi un border-radius por estetica*/
         background-color: white;
         border-radius: 55px;
-        background-image: url('https://i.pinimg.com/originals/ad/1e/2c/ad1e2c0c93696b30a9a6c916cb73d4b7.jpgs');
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-
     }
-
+        /*Le di un tamañao a todas las imagenes que estan dentro de producto, por tema de estetica que tengan el mismo tamaño. También añado el border-radius 100%
+        asi obtienen el tamaño redondeado*/
     .producto img {
         width: 200px;
         height: 200px;
         object-fit: contain;
         border-radius: 100%;
     }
-
+        /* Le añado un borde para destacar el carrito, tambien le añado sombras y radio al borde por estetica */
     .carrito {
         border: solid;
         border-radius: 16%;
@@ -44,31 +43,35 @@
 </style>
 
 <body>
-    <div class="container mt-5">
+    <!-- Hemos definido con Bootstrap .container mt-5 el cual añade un margen superior -->
+    <div class="container mt-5 mb-1 p-3 ">
+        <!-- En esta etiqueta estamos centrando h1 y tambien le estamos dando un color predefinido como warning -->
         <header class="titulo text-center text-warning ">
             <h1>TIENDA ONLINE</h1>
         </header>
-        <div class="row mt-3 ">
-            <div class="col-md-8">
-                <div class="row mb-5">
-                    <div class="col-md-4">
-                        <div class="producto ">
+        <!-- Se define la fila la cual contiene los productos y el carrito ,se la las caracteristicas con las clases boostrap para ocupar con las 12 unidades
+         primero creo un row para almacenar en el container producto mas carrito, dandole un mt (margin top) y mb (margin bottom) .  -->
+        <div class="row mt-3 mb-3 ">
+            <div class="col-12-md-8"><!--Aqui estamos definiendo que los productos ambas filas ocupen 8 unidades, dejando 4 unidades para el carrito-->
+                <div class="row mb-5"><!--Aqui defino el row para tener la fila de productos mas estructurada y poder darle un margen inferior y que ambas filas de productos no se solapen-->
+                    <div class="col-lg-4 col-md-4 col-12"><!--Aqui hemos definido la medida dela pantalla lg-md- para que aparezcan dos productos con pantalla mediana y un producto con pantallas pequeñas-->
+                        <div class="producto "><!--Definimos la clase producto por si tuviesemos que retocar algo con CSS-->
                             <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTqXJbshggzYcmfodnzVkqJhkwmLBtYRoJovDTBccinEKzHDyUbqPghoZCycwbfzp6EbgLKQ6jcc88bKm9iFKjCTZX4j0zNGRSleBUfK693isVfvXnOAM7QM_2qLki9E9KPrdkJLIH4DUU&usqp=CAc"
-                                class="img-fluid img-thumbnail mx-auto d-block  " alt="Producto 1">
+                                class="img-fluid img-thumbnail mx-auto d-block  " alt="Producto 1"><!--Aqui mirando la documentacion de boostrap le damos fluid para que sea responsiva,mx-auto se centra,d-block actua como bloque unico-->
                             <div class="InfoProducto text-center">THE SIMPSON FAMILY MAXI
                                 <p class="precio">200€</p>
-                                <div class="boton">
+                                <div class="boton"><!--cada valor tiene un identificador unico y siempre es nombre(sería como una constante) + id del producto cada uno el suyo-->
                                     <input type="number" id="cantidad1" value="1" min="1">
                                     <input type="text" id="nombre1" nombre="THE SIMPSON FAMILY MAXI"
                                         value="THE SIMPSON FAMILY MAXI" style="display: none;" disabled>
                                     <input type="number" id="precio1" value="200" style="display: none;" disabled>
-                                    <button class="btn btn-primary mt-1" onclick="añadirCarrito(1)">Añadir al
-                                        Carrito</button>
+                                    <button class="btn btn-primary mt-1" onclick="añadirCarrito(1)"><!--Pasamos como parametro de entrada el identificador del producto para poder construir el getElementById-->
+                                        Añadir al Carrito</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
+                    </div><!--TODOS LOS PRODUCTOS TIENEN LAS MISMAS CLASES, CADA PRODUCTO COMPARTE LA MISMA FUNCION PERO SE LE PASA EL PARAMETRO DE ENTRADA PARA CONSTRUIR SU ID-->
+                    <div class="col-lg-4 col-md-4 col-12">
                         <div class="producto">
                             <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSjb_4qAeI1x1waOGzYPvs6Cm52ABj6p6A3oLOwgNYaeKb1HzbMS3andQnANlZMV9jnJd3DzrAKyFgaIHdrYZgQSMXXEahIW9ky-LY9sTYBE2hJIblH0Y705OSQh4CxlxUt2nC06dXqVBc&usqp=CAc"
                                 class="img-fluid img-thumbnail mx-auto d-block " alt="Producto 2">
@@ -79,13 +82,13 @@
                                     <input type="text" id="nombre2" nombre="BEST. DAD. EVER. HOMER."
                                         value="BEST. DAD. EVER. HOMER." style="display: none;" disabled>
                                     <input type="number" id="precio2" value="59" style="display: none;" disabled>
-                                    <button class="btn btn-primary mt-1" onclick="añadirCarrito(2)">Añadir al
-                                        Carrito</button>
+                                    <button class="btn btn-primary mt-1" onclick="añadirCarrito(2)">
+                                        Añadir al Carrito</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-md-4 col-12">
                         <div class="producto">
                             <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSqcNscy-aKJoJ6ZCYquU1XC4l7oRyVWOc1VH2H_4maTTQAplXXrooObJ0yKV6BtqmW7wnUf63d4uXWIR0Kl3MUNjIjNdLkKgYnr8jRfxE-loUSAy1yXU9SVSiGFw3fDulVeBIy7w&usqp=CAc"
                                 class="img-fluid img-thumbnail mx-auto d-block " alt="Producto 3">
@@ -96,8 +99,8 @@
                                     <input type="text" id="nombre3" nombre="SECONDS OF SWEETNESS"
                                         value="SECONDS OF SWEETNESS" style="display: none;" disabled>
                                     <input type="number" id="precio3" value="88" style="display: none;" disabled>
-                                    <button class="btn btn-primary mt-1" onclick="añadirCarrito(3)">Añadir al
-                                        Carrito</button>
+                                    <button class="btn btn-primary mt-1" onclick="añadirCarrito(3)">
+                                        Añadir al Carrito</button>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +108,7 @@
                 </div>
 
                 <div class="row mt-3 mb-5">
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-md-4 col-12">
                         <div class="producto">
                             <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcT_1RJ4_WNzjYc7EJvk6V0W_6z9mZvzYXCQaW_OEInn4Ea_0DaKWHTDi0G6ajyy3tOT3G9A2t3MrgXA5IuqxT4NHHvPLa-OjWwTf_xKZPT42GM571SRj-PKoUquWaFjgsVoAYkuow&usqp=CAc"
                                 class="img-fluid img-thumbnail mx-auto d-block"   alt="Producto 4">
@@ -116,13 +119,13 @@
                                     <input type="text" id="nombre4" nombre="D'OH OF THE DEAD" value="D'OH OF THE DEAD"
                                         style="display: none;" disabled>
                                     <input type="number" id="precio4" value="75" style="display: none;" disabled>
-                                    <button class="btn btn-primary mt-1" onclick="añadirCarrito(4)">Añadir al
-                                        Carrito</button>
+                                    <button class="btn btn-primary mt-1" onclick="añadirCarrito(4)">
+                                        Añadir al Carrito</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-md-4 col-12">
                         <div class="producto">
                             <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSuhquSysBXdqUwkp3hrmkddrAs27rQeQsIS3Dqn_Ck6ds3pieWVYzrkgtcsoGXsDsOZ4HHlkw8gfCD_GKNbAIQ1gq6GWEZplgTr8e-55TQprcXRVb1-C2sce56kckjQGoUOM3yiXPw&usqp=CAc"
                                 class="img-fluid img-thumbnail mx-auto d-block" alt="Producto 5">
@@ -133,13 +136,13 @@
                                     <input type="text" id="nombre5" nombre="ANGEL BART" value="ANGEL BART"
                                         style="display: none;" disabled>
                                     <input type="number" id="precio5" value="65.55" style="display: none;" disabled>
-                                    <button class="btn btn-primary mt-1" onclick="añadirCarrito(5)">Añadir al
-                                        Carrito</button>
+                                    <button class="btn btn-primary mt-1" onclick="añadirCarrito(5)">
+                                        Añadir al Carrito</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-md-4 col-12">
                         <div class="producto">
                             <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTvzNg1drN8JJjLehP3ECWl7Fpa00MicR8T-FaY4ERgPX6-apmNaaA0gSZAAkBd_i3y1zFRfbcgC2zcrBiKmztOQb9253VcXHcnnb4MhEc3VgfL3-cTuLm8qpDLEJJVbO9j47COyjIf&usqp=CAc"
                                 class="img-fluid img-thumbnail mx-auto d-block " alt="Producto 6">
@@ -150,29 +153,30 @@
                                     <input type="text" id="nombre6" nombre="CHRISTMAS SIMPSONS"
                                         value="CHRISTMAS SIMPSONS" style="display: none;" disabled>
                                     <input type="number" id="precio6" value="60" style="display: none;" disabled>
-                                    <button class="btn btn-primary mt-1" onclick="añadirCarrito(6)">Añadir al
-                                        Carrito</button>
+                                    <button class="btn btn-primary mt-1" onclick="añadirCarrito(6)">
+                                        Añadir al Carrito</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-5">
-                <div class="carrito text-center p-3 d-flex flex-column h-100 position-relative text-warning ">
+            <div class="col mb-3">
+                <div class="carrito text-center p-4 d-flex flex-column h-100  text-warning "><!--Aqui aplicamos un padding y le asignamos d-flex para poder alinear verticalmente los elemntos 
+                    el h-100 es para que ocupe el 100% de la altura-->
                     <h1>Carrito de Compras</h1>
                     <ul id="carrito"></ul>
                     <footer class="mt-auto">
-                        <h2 class="total text-warning">
+                        <h2 class="total text-warning text-center">
                             Total Carrito :
                             <span id="mostrarTotal">
                                 0.0
                             </span>
                             €
                         </h2>
-                        <div class="d-flex justify-content-center gap-2 ">
-                            <button class="btn btn-primary " onclick="FinalizarCompra()">Finalizar Compra</button>
-                            <button class="btn btn-danger" onclick="borrarProducto()">Eliminar Producto</button>
+                        <div class="text-center">
+                            <button class="btn btn-primary mb-1 " onclick="FinalizarCompra()">Finalizar Compra</button>
+                            <button class="btn btn-danger mt-1" onclick="borrarProducto()">Eliminar Producto</button>
                         </div>
                     </footer>
                 </div>
@@ -180,14 +184,16 @@
         </div>
     </div>
     <script>
-        let ListaProductos = [];
-
+        let ListaProductos = [];// Esta es nuestra coleccion de productos definida como array []
+        //Tras probar varias ideas esta fue la que mas me convencio, todos los productos tiene esta estructura nombreX, ya que lo unico que cambia en el id es la numeracion final
+        //Entonces lo que hace la funcion es generar nombreX pasandole X como parametro de entrada en Onclick. Entonces podemos entender que cada click es unico y le pasara los id 
+        //del producto correspondiente
         function añadirCarrito(id) {
-            
+        //Aqui definimos donde va asignado cada valor que obtenemos del producto    
             const nombre = document.getElementById('nombre' + id).value;
             const precio = document.getElementById('precio' + id).value;
             const cantidad = document.getElementById('cantidad' + id).value;
-
+        //Aqui reasignamos las variables o podriamos entenderlo como el constructor de producto, añadiendole el total que sería el precio*cantidad
             const producto = {
                 nombre: nombre,
                 precio: precio,
@@ -195,43 +201,45 @@
                 total: precio * cantidad
 
             };
+        //Aqui hacemos el push a nuestra lista de productos, para añadirlo a la coleccion    
             ListaProductos.push(producto)
-            console.log(ListaProductos)
-            mostrarCarrito();
+            console.log(ListaProductos)//Lo dejo activo pero era para verificar si esta funcionando correctamente antes de avanzar en el codigo.
+            mostrarCarrito();//añado la funcion mostrar carrito despues de hacer el push
         };
 
         function mostrarCarrito() {
-            const contenidoCarrito = document.getElementById('carrito');
-            let mostrarTotal = document.getElementById('mostrarTotal');
+            const contenidoCarrito = document.getElementById('carrito');//asignamos conenidoCarrito a carrito mediante el id carrito que es una lista
+            let mostrarTotal = document.getElementById('mostrarTotal');//asginamos mostrar total a mostrar total del html mediante el id
 
-            contenidoCarrito.innerHTML = "";
-            let PrecioTotal = 0;
-
+            contenidoCarrito.innerHTML = "";//cada vez que la pagina se inicie el contenido del carrito debe estar a 0.
+            let PrecioTotal = 0;//inicializamos nuestra variable a 0, estara será encargada de ir sumando el total de cada producto.
+            //Aplicamos un forEach sobre nuestro array, dato es elemento que contiene el array y va asignando un index (posicion) a cada elemento.
             ListaProductos.forEach((dato, index) => {
-                const divmuestra = document.createElement('div');
-                divmuestra.innerHTML = `
+                const divmuestra = document.createElement('div');//divMuestra crea elemntos div 
+                divmuestra.innerHTML = ` 
                 ${index + 1}. ${dato.nombre} - ${dato.precio}€ x ${dato.cantidad} = ${dato.total.toFixed(2)}€
-                `;
-                contenidoCarrito.appendChild(divmuestra);
-                PrecioTotal += dato.total;
+                `;//Como estamos recorriendo la lista de productos que contiene produto y producto esta formado por nombre,precio,cantidad,total podemos acceder a esos atributos 
+                // e insertarlos en ese div que a su vez forma una lista porque asi se define en el html 
+                contenidoCarrito.appendChild(divmuestra);//aqui se agrega para que dependa del padre y adopte la mismas caracteristicas, entiendo que no rompiedno la estrucutra del html
+                PrecioTotal += dato.total;//Aqui vamos acumulando el precio en la variable PrecioTotal
             });
-            mostrarTotal.textContent = PrecioTotal.toFixed(2);
+            mostrarTotal.textContent = PrecioTotal.toFixed(2);//Aqui igualamos para que se muestre por pantalla, se utiliza textContent para cambiar el contenido
+                                                              //  y aparte formateamos la salida para que tenga dos decimales.
         };
 
-        function FinalizarCompra() {
-            const contenidoCarrito = document.getElementById('carrito').textContent;
+        function FinalizarCompra() {//asginamos cantidad total al contenido de mostrarTotal que depues se asignara a decimales, le hacemos un formateo a dos decimales para mostrar por pantalla
             const CantidadTotal = document.getElementById('mostrarTotal').textContent;
-            let nProductos = 0;
+            let nProductos = 0;//nuestro contador de productos
 
             ListaProductos.forEach((producto) => {
-                nProductos += parseInt(producto.cantidad);
+                nProductos += parseInt(producto.cantidad);//aqui sumamos a nproductos la canitdad de cada producto de la lista y lo vamos acumulando en nProductos
 
             }
             );
-            const decimales = parseFloat(CantidadTotal).toFixed(2);
-            console.log(nProductos);
+            const decimales = parseFloat(CantidadTotal).toFixed(2);//formateamos a dos decimales y lo convertimos en float
+            console.log(nProductos);//lo dejo activo , estaba comprobando si se hacia bien los calculos de cantidad total y numero de productos
             console.log(CantidadTotal);
-            if (nProductos > 0) {
+            if (nProductos > 0) {//Aqui solamente meto un condicional por si se le da al boton aparezca un mensaje en el cual diga que el carrito esta vacio
                 alert(`TU COMPRA ES: ${nProductos} productos con un importe total de ${decimales} €`);
             } else {
                 alert(`¡¡NO HAS COMPRADO NADA!!`);
@@ -239,10 +247,10 @@
         };
 
         function borrarProducto() {
-            if (ListaProductos.length > 0) {
+            if (ListaProductos.length > 0) {//Aqui indicamos que si el array contiene algo lo puede borrar con el metodo pop(), borra al ultimo de la fila
                 ListaProductos.pop();
                 mostrarCarrito();
-            } else {
+            } else {//si intentas borrar un articulo del carrito y este no contiene nada, salta el mensaje no hay articulos en el carito
                 alert(`No hay articulos en el carrito `)
             }
         };
